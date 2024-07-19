@@ -5,15 +5,6 @@ from django.db.models import F, ExpressionWrapper, FloatField, Value
 from django.db.models.functions import Sin, Cos, ACos, Radians
 
 
-def format_distance(distance):
-    if distance is None:
-        return None
-    if distance < 1000:
-        return f"{int(distance)}m"
-    else:
-        return f"{distance/1000:.1f}km"
-
-
 class BottleReturnListView(generics.ListAPIView):
     serializer_class = BottleReturnSerializer
 
