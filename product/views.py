@@ -1,9 +1,7 @@
-from django.shortcuts import render
-
-from rest_framework import views
-from .models import ALLERGEN_CHOICES
+from rest_framework import views, generics, status
+from .models import ALLERGEN_CHOICES, Product
 from rest_framework.response import Response
-from rest_framework import status
+from .serializers import ProductSerializer
 
 
 class AllergenListView(views.APIView):
@@ -12,3 +10,9 @@ class AllergenListView(views.APIView):
             "allergen_list": [allergen[1] for allergen in ALLERGEN_CHOICES]
         }
         return Response(allergens_korean, status=status.HTTP_200_OK)
+
+
+class ProductDetailView(generics.RetrieveAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    lookup_field = "id"
