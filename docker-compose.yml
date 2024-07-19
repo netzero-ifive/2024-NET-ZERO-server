@@ -23,8 +23,6 @@ services:
       - static_volume:/web/static
     expose:
       - "8000"
-    depends_on:
-      - redis
 
 volumes:
   static_volume:
