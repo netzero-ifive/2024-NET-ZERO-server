@@ -14,7 +14,7 @@ class Kiosk(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
 
-    image = models.ImageField(upload_to=kiosk_image_upload_to, null=True)
+    image = models.ImageField(upload_to=kiosk_image_upload_to, null=True, blank=True)
 
     products = models.ManyToManyField("product.Product", related_name="kiosks")
 
