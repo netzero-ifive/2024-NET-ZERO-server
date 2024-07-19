@@ -1,0 +1,30 @@
+version: "2"
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80/tcp"
+      - "443:443/tcp"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - static_volume:/static
+      - /etc/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - web
+      
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: web
+    command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/web/static
+    expose:
+      - "8000"
+    depends_on:
+      - redis
+
+volumes:
+  static_volume:
