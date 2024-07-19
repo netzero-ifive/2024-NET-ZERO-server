@@ -46,5 +46,17 @@ class KioskSerializer(serializers.ModelSerializer):
 class KioskDetailSerializer(KioskSerializer):
     products = ProductSerializer(many=True, read_only=True)
 
-    class Meta(KioskSerializer.Meta):
-        fields = KioskSerializer.Meta.fields + ["products"]
+    class Meta:
+        model = Kiosk
+        fields = [
+            "id",
+            "name",
+            "image",
+            "resized_image_url",
+            "address",
+            "latitude",
+            "longitude",
+            "distance",
+            "formatted_distance",
+            "products",
+        ]
