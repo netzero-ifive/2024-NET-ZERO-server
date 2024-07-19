@@ -6,6 +6,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     price = models.IntegerField(null=True, blank=True)
     description = models.TextField(blank=True)
+    size = models.CharField(max_length=100, blank=True)  # 총 내용량
 
     def get_nutrients_ko_default():
         return {
@@ -51,6 +52,8 @@ class Product(models.Model):
     nutrients_ko = models.JSONField(
         blank=True, default=get_nutrients_ko_default()
     )  # 영양정보
+    source_of_manufacture = models.TextField(blank=True, default="")  # 제조원
+    caution = models.TextField(blank=True, default="")  # 주의사항
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
