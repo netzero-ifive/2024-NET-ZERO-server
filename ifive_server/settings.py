@@ -30,7 +30,7 @@ SECRET_KEY = "django-insecure-!q9d@qjrzq&7q3$r$(+ly!yz9tn@5nmj#-zp%!w3&^m=j_k2ms
 DEBUG = True if env("DJANGO_DEBUG") == "True" else False
 
 ALLOWED_HOSTS = ["re-zero-server.muromi.net", "localhost"]
-CSRF_TRUSTED_ORIGINS = ["re-zero-server.muromi.net", "localhost"]
+CSRF_TRUSTED_ORIGINS = ["https://re-zero-server.muromi.net", "localhost"]
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
