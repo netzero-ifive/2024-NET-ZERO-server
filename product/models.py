@@ -3,8 +3,8 @@ from django.db import models
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
-    price = models.IntegerField()
-    description = models.TextField()
+    price = models.IntegerField(null=True)
+    description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -14,8 +14,8 @@ class Product(models.Model):
 
 class Qrcode(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    data = models.CharField(max_length=100)
-    image = models.ImageField(upload_to="qrcodes/")
+    data = models.CharField(max_length=100, blank=True)
+    image = models.ImageField(upload_to="qrcodes/", null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
