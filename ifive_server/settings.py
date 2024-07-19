@@ -157,3 +157,5 @@ AWS_S3_SECRET_ACCESS_KEY = env("AWS_S3_SECRET_ACCESS_KEY", default="")
 AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME", default="")
 
 S3_HOST_NAME = ".s3.amazonaws.com"
+
+CLOUDFRONT_DOMAIN = "https://d1d3hkl8t05n7y.cloudfront.net"
