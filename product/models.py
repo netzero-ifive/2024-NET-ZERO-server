@@ -19,27 +19,29 @@ def qrcode_image_upload_to(instance, filename):
     return os.path.join("qrcodes", filename)
 
 
+ALLERGEN_CHOICES = [
+    ("POULTRY", "난류"),
+    ("MILK", "우유"),
+    ("BUCKWHEAT", "메밀"),
+    ("PEANUT", "땅콩"),
+    ("SOYBEAN", "대두"),
+    ("WHEAT", "밀"),
+    ("MACKEREL", "고등어"),
+    ("CRAB", "게"),
+    ("SHRIMP", "새우"),
+    ("PORK", "돼지고기"),
+    ("PEACH", "복숭아"),
+    ("TOMATO", "토마토"),
+    ("SULFITE", "아황산류"),
+    ("WALNUT", "호두"),
+    ("CHICKEN", "닭고기"),
+    ("BEEF", "쇠고기"),
+    ("SQUID", "오징어"),
+    ("SHELLFISH", "조개류"),
+]
+
+
 class Allergen(models.Model):
-    ALLERGEN_CHOICES = [
-        ("POULTRY", "난류"),
-        ("MILK", "우유"),
-        ("BUCKWHEAT", "메밀"),
-        ("PEANUT", "땅콩"),
-        ("SOYBEAN", "대두"),
-        ("WHEAT", "밀"),
-        ("MACKEREL", "고등어"),
-        ("CRAB", "게"),
-        ("SHRIMP", "새우"),
-        ("PORK", "돼지고기"),
-        ("PEACH", "복숭아"),
-        ("TOMATO", "토마토"),
-        ("SULFITE", "아황산류"),
-        ("WALNUT", "호두"),
-        ("CHICKEN", "닭고기"),
-        ("BEEF", "쇠고기"),
-        ("SQUID", "오징어"),
-        ("SHELLFISH", "조개류"),
-    ]
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, choices=ALLERGEN_CHOICES)
 
