@@ -51,4 +51,5 @@ urlpatterns = [
     path("office/", include("admin_page.urls")),
     path("", include("product.urls")),
     path("api/bottle-return/", include("bottle_return.urls")),
+    path("api/kiosks/", include("kiosk.urls")),
 ]

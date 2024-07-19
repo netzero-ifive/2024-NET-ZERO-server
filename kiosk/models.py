@@ -3,7 +3,8 @@ import uuid, os
 
 
 class Kiosk(models.Model):
-    address = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, blank=True)
+    address = models.CharField(max_length=100, blank=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
 
