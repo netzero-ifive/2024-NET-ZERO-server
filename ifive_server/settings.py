@@ -31,6 +31,8 @@ DEBUG = True if env("DJANGO_DEBUG") == "True" else False
 
 ALLOWED_HOSTS = ["re-zero-server.muromi.net", "localhost"]
 CSRF_TRUSTED_ORIGINS = ["re-zero-server.muromi.net", "localhost"]
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 
 # Application definition
