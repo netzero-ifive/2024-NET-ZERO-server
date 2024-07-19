@@ -18,7 +18,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: web
-    command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn ifive_server.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/web/static
     expose:
