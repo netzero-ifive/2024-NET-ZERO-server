@@ -16,7 +16,6 @@ import os
 
 
 def get_resized_image_url(image_path: str):
-
     # 파일 이름과 확장자 분리
     base_name, _ = os.path.splitext(image_path)
 
