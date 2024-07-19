@@ -18,6 +18,7 @@ djangorestframework = "^3.15.2"
 drf-yasg = "^1.21.7"
 setuptools = "^71.0.3"
 qrcode = "^7.4.2"
+django-cors-headers = "^4.4.0"
 
 
 [build-system]
