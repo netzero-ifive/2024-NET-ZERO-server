@@ -3,6 +3,6 @@ from .models import Kiosk
 from .serializers import KioskSerializer
 
 
-class KioskViews(generics.ListAPIView):
+class KioskViews(generics.RetrieveAPIView):
     queryset = Kiosk.objects.all()
     serializer_class = KioskSerializer

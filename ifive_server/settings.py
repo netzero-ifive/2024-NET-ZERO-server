@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "product",
     "kiosk",
+    "bottle_return",
     # 3rd party
     "rest_framework",
     "drf_yasg",
