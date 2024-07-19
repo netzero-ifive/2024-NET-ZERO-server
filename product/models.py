@@ -2,10 +2,17 @@ from django.db import models
 import uuid, os
 
 
+def product_image_upload_to(instance, filename):
+    ext = filename.split(".")[-1]
+    filename = f"{uuid.uuid4()}.{ext}"
+    return os.path.join("product", filename)
+
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     price = models.IntegerField(null=True, blank=True)
     description = models.TextField(blank=True)
+    image = models.ImageField(upload_to=product_image_upload_to, null=True, blank=True)
     size = models.CharField(max_length=100, blank=True)  # 총 내용량
 
     def get_nutrients_ko_default():

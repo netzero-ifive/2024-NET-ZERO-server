@@ -17,8 +17,11 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = [
             "name",
             "price",
-            "description",
+            "image",
+            "size",
             "materials_ko",
             "nutrients_ko",
+            "source_of_manufacture",
+            "caution",
             "allergens",
         ]
