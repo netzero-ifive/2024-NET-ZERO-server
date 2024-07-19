@@ -1,15 +1,6 @@
 from rest_framework import serializers
 from .models import BottleReturn
-from ifive_server.utils import get_resized_image_url
-
-
-def format_distance(distance):
-    if distance is None:
-        return None
-    if distance < 1000:
-        return f"{int(distance)}m"
-    else:
-        return f"{distance/1000:.1f}km"
+from ifive_server.utils import get_resized_image_url, format_distance
 
 
 class BottleReturnSerializer(serializers.ModelSerializer):
