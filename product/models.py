@@ -1,4 +1,5 @@
 from django.db import models
+import uuid, os
 
 
 class Product(models.Model):
@@ -12,12 +13,15 @@ class Product(models.Model):
         return self.name
 
 
+def qrcode_image_upload_to(instance, filename):
+    ext = filename.split(".")[-1]
+    filename = f"{uuid.uuid4()}.{ext}"
+    return os.path.join("qrcodes", filename)
+
+
 class Qrcode(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     data = models.CharField(max_length=100, blank=True)
-    image = models.ImageField(upload_to="qrcodes/", null=True)
+    image = models.ImageField(upload_to=qrcode_image_upload_to, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.qrcode
