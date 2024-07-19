@@ -29,7 +29,7 @@ SECRET_KEY = "django-insecure-!q9d@qjrzq&7q3$r$(+ly!yz9tn@5nmj#-zp%!w3&^m=j_k2ms
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if env("DJANGO_DEBUG") == "True" else False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["re-zero-server.muromi.net", "localhost"]
 
 
 # Application definition
