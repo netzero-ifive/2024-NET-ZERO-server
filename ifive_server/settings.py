@@ -34,6 +34,9 @@ CSRF_TRUSTED_ORIGINS = ["https://re-zero-server.muromi.net"]
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
+CORS_ORIGIN_WHITELIST = env("DJANGO_CORS_ORIGIN_WHITELIST").split(" ")
+CORS_ALLOW_CREDENTIALS = True
+
 
 # Application definition
 
@@ -51,9 +54,11 @@ INSTALLED_APPS = [
     "rest_framework",
     "drf_yasg",
     "storages",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
