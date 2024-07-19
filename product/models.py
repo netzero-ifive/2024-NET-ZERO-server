@@ -62,12 +62,6 @@ class Product(models.Model):
         return str(self.id) + ": " + self.name
 
 
-def qrcode_image_upload_to(instance, filename):
-    ext = filename.split(".")[-1]
-    filename = f"{uuid.uuid4()}.{ext}"
-    return os.path.join("qrcodes", filename)
-
-
 ALLERGEN_CHOICES = [
     ("POULTRY", "난류"),
     ("MILK", "우유"),
@@ -98,6 +92,12 @@ class Allergen(models.Model):
 
     def __str__(self):
         return self.name
+
+
+def qrcode_image_upload_to(instance, filename):
+    ext = filename.split(".")[-1]
+    filename = f"{uuid.uuid4()}.{ext}"
+    return os.path.join("qrcodes", filename)
 
 
 class Qrcode(models.Model):
