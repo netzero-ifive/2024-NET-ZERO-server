@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {% block title %}제품 관리 시스템{% endblock %}
+    </title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+        padding: 20px;
+      }
+
+      header {
+        background: #333;
+        color: #fff;
+        padding-top: 30px;
+        min-height: 70px;
+        border-bottom: #bbb 1px solid;
+      }
+
+      header a {
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 16px;
+      }
+
+      header ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        overflow: hidden;
+      }
+
+      header li {
+        float: left;
+        display: inline;
+        padding: 0 20px;
+      }
+
+      header #branding {
+        float: left;
+      }
+
+      header #branding h1 {
+        margin: 0;
+      }
+
+      header nav {
+        float: right;
+        margin-top: 10px;
+      }
+
+      .highlight,
+      header .current a {
+        color: #e8491d;
+        font-weight: bold;
+      }
+    </style>
+    {% block extra_head %}{% endblock %}
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1>
+            <span class="highlight">제품</span>
+            관리 시스템</h1>
+        </div>
+        <nav>
+          <ul>
+            <li class="current">
+              <a href="">홈</a>
+            </li>
+            <li>
+              <a href="{% url 'product_list' %}">제품 목록</a>
+            </li>
+            <li>
+              <a href="{% url 'create_product' %}">제품 생성</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 제품 관리 시스템. All rights reserved.</p>
+      </div>
+    </footer>
+
+    {% block extra_body %}{% endblock %}
+  </body>
+
+</html>

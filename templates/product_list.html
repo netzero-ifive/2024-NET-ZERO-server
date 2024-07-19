@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block title %}제품 목록{% endblock %}
+
+{% block extra_head %}
+  <style>
+    .product-list {
+      max-width: 1000px;
+      margin: 2rem auto;
+    }
+
+    .product-table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-table td,
+    .product-table th {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .product-table th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    .product-table tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .product-link {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    .product-link:hover {
+      text-decoration: underline;
+    }
+
+    .qr-button {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #2ecc71;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .qr-button:hover {
+      background-color: #27ae60;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="product-list">
+    <h1>제품 목록</h1>
+
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>제품명</th>
+          <th>가격</th>
+          <th>생성일</th>
+          <th>QR 코드</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in products %}
+          <tr>
+            <td>{{ product.id }}</td>
+            <td>
+              <a href="{% url 'product_detail' product.id %}" class="product-link">{{ product.name }}</a>
+            </td>
+            <td>
+              {% if product.price %}{{ product.price }}원{% else %}-{% endif %}
+            </td>
+            <td>{{ product.created_at|date:"Y-m-d H:i" }}</td>
+            <td>
+              <a href="{% url 'generate_qr_code' product.id %}" class="qr-button">QR 코드 생성</a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="5">등록된 제품이 없습니다.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
