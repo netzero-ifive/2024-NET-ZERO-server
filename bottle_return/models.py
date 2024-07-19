@@ -10,10 +10,11 @@ def bottle_return_image_upload_to(instance, filename):
 
 class BottleReturn(models.Model):
     name = models.CharField(default="페트병 반환소", max_length=100)
-    address = models.CharField(max_length=100, blank=True)
     image = models.ImageField(
         upload_to=bottle_return_image_upload_to, null=True, blank=True
     )
+
+    address = models.CharField(max_length=100, blank=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
 

@@ -55,6 +55,6 @@ class BottleReturnListView(generics.ListAPIView):
         return queryset
 
 
-class BottleReturnDetailView(generics.RetrieveAPIView):
-    queryset = BottleReturn.objects.all()
-    serializer_class = BottleReturnSerializer
+# class BottleReturnDetailView(generics.RetrieveAPIView):
+#     queryset = BottleReturn.objects.all()
+#     serializer_class = BottleReturnSerializer

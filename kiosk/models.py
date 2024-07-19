@@ -2,11 +2,19 @@ from django.db import models
 import uuid, os
 
 
+def kiosk_image_upload_to(instance, filename):
+    ext = filename.split(".")[-1]
+    filename = f"{uuid.uuid4()}.{ext}"
+    return os.path.join("kiosk", filename)
+
+
 class Kiosk(models.Model):
     name = models.CharField(max_length=100, blank=True)
     address = models.CharField(max_length=100, blank=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
+
+    image = models.ImageField(upload_to=kiosk_image_upload_to, null=True)
 
     products = models.ManyToManyField("product.Product", related_name="kiosks")
 
