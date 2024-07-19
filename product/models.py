@@ -4,10 +4,53 @@ import uuid, os
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
-    price = models.IntegerField(null=True)
+    price = models.IntegerField(null=True, blank=True)
     description = models.TextField(blank=True)
 
-    # materials_ko = models.TextField(blank=True) # 원재료
+    def get_nutrients_ko_default():
+        return {
+            "serving_size": "100ml",
+            "calories": "30kcal",
+            "detail": {
+                "탄수화물": {
+                    "amount": "0g",
+                    "percent": "0%",
+                },
+                "당류": {
+                    "amount": "0g",
+                    "percent": "0%",
+                },
+                "단백질": {
+                    "amount": "0g",
+                    "percent": "0%",
+                },
+                "지방": {
+                    "amount": "0g",
+                    "percent": "0%",
+                },
+                "포화지방": {
+                    "amount": "0g",
+                    "percent": "0%",
+                },
+                "트랜스지방": {
+                    "amount": "0g",
+                    "percent": "0%",
+                },
+                "콜레스트롤": {
+                    "amount": "0mg",
+                    "percent": "0%",
+                },
+                "나트륨": {
+                    "amount": "0mg",
+                    "percent": "0%",
+                },
+            },
+        }
+
+    materials_ko = models.TextField(blank=True, default="")  # 원재료
+    nutrients_ko = models.JSONField(
+        blank=True, default=get_nutrients_ko_default()
+    )  # 영양정보
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
