@@ -40,6 +40,8 @@ CORS_ORIGIN_WHITELIST = [
     "http://165.246.116.58:5173",
     "https://re-zero-bucket-3.s3.ap-northeast-2.amazonaws.com",
     "http://re-zero-bucket-3.s3.ap-northeast-2.amazonaws.com",
+    "https://d37p9mmfzq90ws.cloudfront.net",
+    "http://d37p9mmfzq90ws.cloudfront.net",
 ]
 CORS_ALLOW_CREDENTIALS = True
 
